@@ -6,8 +6,6 @@ import Header from '../index';
 
 afterEach(cleanup);
 
-
-
 describe('Header', () => {
 
     it('header renders correctly', () => {
