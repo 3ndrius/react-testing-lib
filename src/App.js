@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import Header from './components/Header/index.js'
 
 function App() {
   return (
     <div className="App">
-      <h1>React work work fine test</h1>
+      <Header title={"Site title"} />
     </div>
   );
 }
