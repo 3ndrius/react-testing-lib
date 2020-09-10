@@ -5,7 +5,7 @@ import Header from './components/Header/index.js'
 function App() {
   return (
     <div className="App">
-      <Header title={"Site title"} />
+      <Header title="Hello!" />
     </div>
   );
 }
