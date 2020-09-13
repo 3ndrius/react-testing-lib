@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header'
-import Image from './components/Images'
+import Images from './components/Images'
 
 function App() {
   return (
     <div className="App">
       {/* <Header title="Hello!" /> */}
-      <Image />
+      <Images />
     </div>
   );
 }

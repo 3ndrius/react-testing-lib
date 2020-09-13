@@ -10,13 +10,13 @@ function greetingReducer(state, action) {
     case 'SUCCESS': {
       return {
         error: null,
-        greeting: action.greeting,
+        title: action.greeting,
       }
     }
     case 'ERROR': {
       return {
         error: action.error,
-        greeting: null,
+        title: null,
       }
     }
     default: {
@@ -25,8 +25,8 @@ function greetingReducer(state, action) {
   }
 }
 
-export default function Image({ url }) {
-  const [{ error, greeting }, dispatch] = useReducer(
+export default function Images(props) {
+  const [{ error, title }, dispatch] = useReducer(
     greetingReducer,
     initialState
   )
@@ -34,12 +34,12 @@ export default function Image({ url }) {
 
   const fetchGreeting = async () => {
     axios
-      .get(url)
+      .get(props.url)
       .then(response => {
         const { data } = response
-
-        dispatch({ type: 'SUCCESS', greeting: data })
+        dispatch({ type: 'SUCCESS', title: data.title })
         setButtonClicked(true)
+
       })
       .catch(error => {
         dispatch({ type: 'ERROR', error })
@@ -53,7 +53,7 @@ export default function Image({ url }) {
       <button onClick={fetchGreeting} disabled={buttonClicked}>
         {buttonText}
       </button>
-      {greeting && <h1>{greeting.title}</h1>}
+      {title && <h1>{title}</h1>}
       {error && <p role="alert">Oops, failed to fetch!</p>}
     </div>
   )
