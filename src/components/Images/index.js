@@ -10,7 +10,7 @@ function greetingReducer(state, action) {
     case 'SUCCESS': {
       return {
         error: null,
-        title: action.greeting,
+        title: action.title,
       }
     }
     case 'ERROR': {
@@ -25,7 +25,7 @@ function greetingReducer(state, action) {
   }
 }
 
-export default function Images(props) {
+export default function Images({url}) {
   const [{ error, title }, dispatch] = useReducer(
     greetingReducer,
     initialState
@@ -34,7 +34,7 @@ export default function Images(props) {
 
   const fetchGreeting = async () => {
     axios
-      .get(props.url)
+      .get(url)
       .then(response => {
         const { data } = response
         dispatch({ type: 'SUCCESS', title: data.title })
@@ -44,6 +44,7 @@ export default function Images(props) {
       .catch(error => {
         dispatch({ type: 'ERROR', error })
       })
+  
   }
 
   const buttonText = buttonClicked ? 'Ok' : 'Load Data'
